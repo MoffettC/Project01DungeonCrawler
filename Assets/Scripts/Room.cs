@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Room : MonoBehaviour {
-
-    public GameObject[,] room;
-    public GameObject character;
+public class Room : MonoBehaviour
+{
+    public GameObject[,] roomArray;
     public float tileSize = 1f;
+    private MapManager mapManager;
 
     private int x1;
     private int y1;
@@ -13,13 +13,14 @@ public class Room : MonoBehaviour {
     private int y2;
     public Vector2 center;
 
-    public Room(int x, int y, int width, int height){
+    public Room(int x, int y, int width, int height)
+    {
         x1 = x;
         x2 = x + width;
         y1 = y;
         y2 = y + height;
         center = new Vector2(((x1 + x2) / 2), ((y1 + y2) / 2));
-     }
+    }
 
 
     public GameObject CreateRoom(GameObject prefab)
@@ -27,27 +28,33 @@ public class Room : MonoBehaviour {
         if (!prefab)
             Debug.LogWarning("Unable to find TilePrefab in your Resources folder.");
 
-        GameObject Room = new GameObject();
-        Room.name = "Room";
-        room = new GameObject[x2, y2];
+        GameObject room = new GameObject();
+        room.name = "Room";
+        //room.transform.parent = mapManager.transform;
 
-        for (int i = x1; i < x2; i++){
-            for (int j = y1; j < y2; j++){             
+        roomArray = new GameObject[x2, y2];
+
+        for (int i = x1; i < x2; i++)
+        {
+            for (int j = y1; j < y2; j++)
+            {
                 GameObject floorTile = Instantiate(prefab, new Vector3(i * tileSize, j * tileSize, 0), Quaternion.identity) as GameObject;
-                floorTile.transform.parent = Room.transform;
+                floorTile.transform.parent = room.transform;
                 floorTile.name = "floorTile" + i + j;
-                room[i, j] = floorTile;
-                RemoveWallTiles(i, j);
+                roomArray[i, j] = floorTile;
+                SetTilesWalkable(i, j);
                 //GameObject playerChar = Instantiate(character, new Vector3(i * tileSize, j * tileSize, 0), Quaternion.identity) as GameObject;
             }
         }
-        return Room;
+        return room;
     }
 
-    //Need to actually remove tiles and not use value as moveable/nonmoveable
-    public void RemoveWallTiles(int i, int j) {
-        TileMap.wallTiles[i, j] = 0;
-        Debug.Log(TileMap.wallTiles[i, j]);
+    public void SetTilesWalkable(int i, int j)
+    {
+        mapManager = GameObject.FindObjectOfType<MapManager>();
+        mapManager.SetWalkable(i, j);
+        mapManager.RemoveFloor(i, j);
+
     }
 
 
@@ -58,8 +65,9 @@ public class Room : MonoBehaviour {
     }
 
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

@@ -3,66 +3,88 @@ using System.Collections;
 
 public class Character : MonoBehaviour {
 
-    Vector3 pos;
+    private Vector3 pos;
+    private int moveSpeed = 6;
+    private MapManager tileMap;
+    private CharacterManager charManager;
 
-    public int moveSpeed = 4;
-    private TileMap tileMap;
+    void Start()
+    {
+        charManager = FindObjectOfType<CharacterManager>();
+        pos = new Vector3(charManager.spawnX, charManager.spawnY, 0);
+        
+    }
 
-	// Use this for initialization
-	void Start () {
-        pos = transform.position;
-        tileMap = GameObject.FindObjectOfType<TileMap>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        if (Input.GetKeyDown(KeyCode.W) && transform.position == pos) {
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && transform.position == pos)
+        {
             Vector3 playerPos = pos;
-            int playerPosX = (int)(pos.x + 0.5);
-            int playerPosY = (int)(pos.y + 0.5);
-            if (tileMap.Walkable(playerPosX, playerPosY + 1)) {
+            int playerPosX = (int)(pos.x);
+            int playerPosY = (int)(pos.y);
+            //Debug.Log(playerPos);
+            //Debug.Log("wallTiles: " + playerPosX + (playerPosY + 1) + " " + TileMap.wallTiles[playerPosX, playerPosY + 1]);
+            if (MapManager.wallTiles[playerPosX, playerPosY + 1] == 0)
+            {
                 pos += Vector3.up;
-            } else {
+                Debug.Log("Moving Up!");
+            }
+            else
+            {
                 Debug.Log("Cant Walk Up!");
             }
 
             //transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.A) && transform.position == pos) {
+        if (Input.GetKeyDown(KeyCode.A) && transform.position == pos)
+        {
             Vector3 playerPos = pos;
-            int playerPosX = (int)(pos.x + 0.5);
-            int playerPosY = (int)(pos.y + 0.5);
-            if (tileMap.Walkable(playerPosX - 1, playerPosY)) {
+            int playerPosX = (int)(pos.x);
+            int playerPosY = (int)(pos.y);
+            if (MapManager.wallTiles[playerPosX - 1, playerPosY] == 0)
+            {
                 pos += Vector3.left;
-            } else {
+            }
+            else
+            {
                 Debug.Log("Cant Walk Left!");
             }
 
-            // transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            //transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.S) && transform.position == pos) {
+        if (Input.GetKeyDown(KeyCode.S) && transform.position == pos)
+        {
             Vector3 playerPos = pos;
-            int playerPosX = (int)(pos.x + 0.5);
-            int playerPosY = (int)(pos.y + 0.5);
-            if (tileMap.Walkable(playerPosX, playerPosY - 1)) {
+            int playerPosX = (int)(pos.x);
+            int playerPosY = (int)(pos.y);
+            if (MapManager.wallTiles[playerPosX, playerPosY - 1] == 0)
+            {
                 pos += Vector3.down;
-            } else {
+            }
+            else
+            {
                 Debug.Log("Cant Walk Down!");
             }
             // transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.D) && transform.position == pos) {
+        if (Input.GetKeyDown(KeyCode.D) && transform.position == pos)
+        {
             Vector3 playerPos = pos;
-            int playerPosX = (int)(pos.x + 0.5);
-            int playerPosY = (int)(pos.y + 0.5);
-            if (tileMap.Walkable(playerPosX + 1, playerPosY)) {
+            int playerPosX = (int)(pos.x);
+            int playerPosY = (int)(pos.y);
+            if (MapManager.wallTiles[playerPosX + 1, playerPosY] == 0)
+            {
                 pos += Vector3.right;
-            } else {
+            }
+            else
+            {
                 Debug.Log("Cant Walk Right!");
             }
             // transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
-
+        //Debug.Log(pos);
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * moveSpeed);
     }
 }
+
+
