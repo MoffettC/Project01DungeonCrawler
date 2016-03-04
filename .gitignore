@@ -5,6 +5,7 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
@@ -46,3 +47,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.info
+Library/metadata/3f/3f5b3ffc77244414abefdd9373423549
+Library
