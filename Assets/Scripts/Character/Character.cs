@@ -43,7 +43,7 @@ public class Character : MonoBehaviour {
             Vector3 playerPos = pos;
             int playerPosX = (int)(pos.x);
             int playerPosY = (int)(pos.y);
-            if (MapManager.wallTiles[playerPosX - 1, playerPosY] == 0)
+            if ((MapManager.wallTiles[playerPosX - 1, playerPosY] == 0) && (enemyManager.SearchEnemyArray(playerPosX - 1, playerPosY)))
             {
                 pos += Vector3.left;
             }
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour {
             Vector3 playerPos = pos;
             int playerPosX = (int)(pos.x);
             int playerPosY = (int)(pos.y);
-            if (MapManager.wallTiles[playerPosX, playerPosY - 1] == 0)
+            if ((MapManager.wallTiles[playerPosX, playerPosY - 1] == 0) && (enemyManager.SearchEnemyArray(playerPosX, playerPosY - 1)))
             {
                 pos += Vector3.down;
             }
@@ -74,7 +74,7 @@ public class Character : MonoBehaviour {
             Vector3 playerPos = pos;
             int playerPosX = (int)(pos.x);
             int playerPosY = (int)(pos.y);
-            if (MapManager.wallTiles[playerPosX + 1, playerPosY] == 0)
+            if ((MapManager.wallTiles[playerPosX + 1, playerPosY] == 0) && (enemyManager.SearchEnemyArray(playerPosX + 1, playerPosY)))
             {
                 pos += Vector3.right;
             }
