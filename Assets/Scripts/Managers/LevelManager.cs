@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -23,9 +23,9 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadLevel(string name) {
         Debug.Log("Level load requested for: " + name);
-        //Application.LoadLevel(name);
+        Application.LoadLevel(name);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(name); //Updated Version
+        //SceneManager.LoadScene(name); //Updated Version
     }
 
     public void Quit() {

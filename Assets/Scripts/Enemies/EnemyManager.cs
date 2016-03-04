@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject newEnemy = Instantiate(enemy, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
         enemyArray[enemyIndex] = newEnemy;
         enemyArray[enemyIndex].name = enemyIndex + " enemy01Type";
-        Debug.Log("eArray Transform: " + enemyArray[enemyIndex].transform.position);
+       // Debug.Log("eArray Transform: " + enemyArray[enemyIndex].transform.position);
         enemyIndex++;
         hasSpawned = true;
     }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class playerPrefsManager : MonoBehaviour {
 
@@ -21,25 +21,25 @@ public class playerPrefsManager : MonoBehaviour {
         return PlayerPrefs.GetFloat(MASTER_VOLUME_KEY);
     }
 
-    public static void UnlockLevel(int level) {
-        if (level <= SceneManager.sceneCountInBuildSettings - 1) {
-            PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(), 1); //Use one for true
-        } else {
-            Debug.LogError("Unlocking level not in build order");
-        }
-    }
+    //public static void UnlockLevel(int level) {
+    //    if (level <= SceneManager.sceneCountInBuildSettings - 1) {
+    //        PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(), 1); //Use one for true
+    //    } else {
+    //        Debug.LogError("Unlocking level not in build order");
+    //    }
+    //}
 
-    public static bool IsLevelUnlocked(int level) {
-        int levelValue = PlayerPrefs.GetInt(LEVEL_KEY + level.ToString());
-        bool isLevelUnlocked = (levelValue == 1);
+    //public static bool IsLevelUnlocked(int level) {
+    //    int levelValue = PlayerPrefs.GetInt(LEVEL_KEY + level.ToString());
+    //    bool isLevelUnlocked = (levelValue == 1);
 
-        if (level <= SceneManager.sceneCountInBuildSettings - 1) {
-            return isLevelUnlocked;
-        } else {
-            Debug.LogError("Unlocking level not in build order");
-            return false;
-        }
-    }
+    //    if (level <= SceneManager.sceneCountInBuildSettings - 1) {
+    //        return isLevelUnlocked;
+    //    } else {
+    //        Debug.LogError("Unlocking level not in build order");
+    //        return false;
+    //    }
+    //}
 
     public static void SetDifficulty(float difficulty) {
         if (difficulty >= 1f && difficulty <= 3f) {
