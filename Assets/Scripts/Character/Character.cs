@@ -29,7 +29,9 @@ public class Character : MonoBehaviour {
             if ((MapManager.wallTiles[playerPosX, playerPosY + 1] == 0) && (enemyManager.SearchEnemyArray(playerPosX, playerPosY + 1)))
             {
                 pos += Vector3.up;
-                Debug.Log("Moving Up!");
+            } else if (enemyManager.SearchEnemyArray(playerPosX, playerPosY + 1) == false)
+            {
+                Debug.Log("Player Attack Detected");
             }
             else
             {
@@ -47,6 +49,10 @@ public class Character : MonoBehaviour {
             {
                 pos += Vector3.left;
             }
+            else if (enemyManager.SearchEnemyArray(playerPosX - 1, playerPosY) == false)
+            {
+                Debug.Log("Player Attack Detected");
+            }
             else
             {
                 Debug.Log("Cant Walk Left!");
@@ -63,6 +69,10 @@ public class Character : MonoBehaviour {
             {
                 pos += Vector3.down;
             }
+            else if (enemyManager.SearchEnemyArray(playerPosX, playerPosY - 1) == false)
+            {
+                Debug.Log("Player Attack Detected");
+            }
             else
             {
                 Debug.Log("Cant Walk Down!");
@@ -77,6 +87,10 @@ public class Character : MonoBehaviour {
             if ((MapManager.wallTiles[playerPosX + 1, playerPosY] == 0) && (enemyManager.SearchEnemyArray(playerPosX + 1, playerPosY)))
             {
                 pos += Vector3.right;
+            }
+            else if (enemyManager.SearchEnemyArray(playerPosX + 1, playerPosY) == false)
+            {
+                Debug.Log("Player Attack Detected");
             }
             else
             {

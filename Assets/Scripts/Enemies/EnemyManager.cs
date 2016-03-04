@@ -58,11 +58,11 @@ public class EnemyManager : MonoBehaviour {
     public bool SearchEnemyArray(int x, int y) {
         for (int i = 0; i < enemyIndex; i++) {
             if ((enemyArray[i].transform.position.x == x) && (enemyArray[i].transform.position.y == y)) {
-                Debug.Log("Enemy detected in spawn spot");
+                //Debug.Log("Enemy detected in spawn spot");
                 return false;
             }   
         }
-        Debug.Log("No enemy detected in spawn spot");
+        //Debug.Log("No enemy detected in spawn spot");
         return true;
     }
 
