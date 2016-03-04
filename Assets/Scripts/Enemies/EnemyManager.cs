@@ -4,8 +4,9 @@ using System.Collections;
 public class EnemyManager : MonoBehaviour {
 
     public GameObject enemy;
-
     public int maxArray = 20;
+
+    private GameObject enemySearched;
     private GameObject[] enemyArray = new GameObject[20];
     private int enemyIndex = 0;
     private MapManager mapManager;
@@ -52,19 +53,31 @@ public class EnemyManager : MonoBehaviour {
         enemyArray[enemyIndex].name = enemyIndex + " enemy01Type";
        // Debug.Log("eArray Transform: " + enemyArray[enemyIndex].transform.position);
         enemyIndex++;
+        MapManager.occupiedTiles[x, y] = 1;
         hasSpawned = true;
     }
 
     public bool SearchEnemyArray(int x, int y) {
         for (int i = 0; i < enemyIndex; i++) {
-            if ((enemyArray[i].transform.position.x == x) && (enemyArray[i].transform.position.y == y)) {
-                //Debug.Log("Enemy detected in spawn spot");
-                return false;
-            }   
+            if (enemyArray[i] != null)
+            {
+                if ((enemyArray[i].transform.position.x == x) && (enemyArray[i].transform.position.y == y))
+                {
+                    enemySearched = enemyArray[i];
+                    //Debug.Log("Enemy detected in spawn spot");
+                    return false;
+                }
+            }
         }
         //Debug.Log("No enemy detected in spawn spot");
         return true;
     }
+
+    public GameObject lastEnemySearched()
+    {
+        return enemySearched;
+    }
+
 
 
 

@@ -6,6 +6,7 @@ public class MapManager : MonoBehaviour
     public GameObject wallPrefab;
     public GameObject floorPrefab;
     public static int[,] wallTiles;
+    public static int[,] occupiedTiles;
     public int mapWidth;
     public int mapHeight;
 
@@ -27,6 +28,7 @@ public class MapManager : MonoBehaviour
 
 
         wallTiles = new int[mapWidth, mapHeight];
+        occupiedTiles = new int[mapWidth, mapHeight];
 
         for (int y = 0; y < mapHeight; y++)
         {
@@ -34,6 +36,7 @@ public class MapManager : MonoBehaviour
             {
                 {
                     wallTiles[x, y] = 1;
+                    occupiedTiles[x, y] = 0;
                     //Debug.Log("Wall Tiles set to 1 " + wallTiles[x, y]);
                 }
             }
