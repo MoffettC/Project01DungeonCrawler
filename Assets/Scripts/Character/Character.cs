@@ -27,9 +27,7 @@ public class Character : MonoBehaviour {
             int playerPosY = (int)(pos.y);
             //Debug.Log(playerPos);
             //Debug.Log("wallTiles: " + playerPosX + (playerPosY + 1) + " " + TileMap.wallTiles[playerPosX, playerPosY + 1]);
-            if ((MapManager.wallTiles[playerPosX, playerPosY + 1] == 0) && (enemyManager.SearchEnemyArray(playerPosX, playerPosY + 1))
-                && (MapManager.occupiedTiles[playerPosX, playerPosY + 1] == 0)
-                )
+            if ((MapManager.wallTiles[playerPosX, playerPosY + 1] == 0) && (MapManager.occupiedTiles[playerPosX, playerPosY + 1] == 0))
             {
                 //Debug.Log("OccupiedTile Occupied: " + playerPosX + (playerPosY + 1));
                 //Debug.Log("OccupiedTile Open: " + playerPosX + playerPosY);
@@ -137,6 +135,12 @@ public class Character : MonoBehaviour {
         double weaponDamage = 20f;
         enemy.GetComponent<Health>().Damage(weaponDamage);
     }
+
+    public void activateItem(GameObject item)
+    {
+
+    }
+
 }
 
 
