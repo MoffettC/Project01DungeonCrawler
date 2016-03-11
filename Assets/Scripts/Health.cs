@@ -5,13 +5,15 @@ public class Health : MonoBehaviour {
 
     public GameObject healthBar;
 
+    private MapManager mapManager;
     private double totalHealth = 100f;
     private double currentHealth;
 
 	// Use this for initialization
 	void Start () {
         currentHealth = totalHealth;
-	}
+        mapManager = FindObjectOfType<MapManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {

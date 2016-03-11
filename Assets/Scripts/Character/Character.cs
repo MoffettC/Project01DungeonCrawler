@@ -5,15 +5,17 @@ public class Character : MonoBehaviour {
 
     private Vector3 pos;
     private int moveSpeed = 6;
-    private MapManager mapManager;
+    private MapManager MapManager;
     private CharacterManager charManager;
     private EnemyManager enemyManager;
+    private ItemManager itemManager;
 
     void Start()
     {
         charManager = FindObjectOfType<CharacterManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        mapManager = FindObjectOfType<MapManager>();
+        MapManager = FindObjectOfType<MapManager>();
+        itemManager = FindObjectOfType<ItemManager>();
         pos = new Vector3(charManager.spawnX, charManager.spawnY, 0);
         
     }
@@ -39,6 +41,15 @@ public class Character : MonoBehaviour {
                 Debug.Log("Player Attack Detected");
                 GameObject enemy = enemyManager.lastEnemySearched();
                 playerWeaponDamage(enemy);
+            } else if (MapManager.occupiedTiles[playerPosX, playerPosY + 1] == 3) {
+                //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY + 1].GetComponent<Item>() as IUseItem;
+                if (itemTest != null) {
+                    itemTest.useItem();
+                    MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                    Destroy(itemManager.itemsAtLocation[playerPosX, playerPosY + 1]);
+                    pos += Vector3.up;
+                }
             }
             else
             {
@@ -53,7 +64,7 @@ public class Character : MonoBehaviour {
             int playerPosX = (int)(pos.x);
             int playerPosY = (int)(pos.y);
             if ((MapManager.wallTiles[playerPosX - 1, playerPosY] == 0) && (enemyManager.SearchEnemyArray(playerPosX - 1, playerPosY))
-                 && (MapManager.occupiedTiles[playerPosX -1, playerPosY] == 0))
+                 && (MapManager.occupiedTiles[playerPosX - 1, playerPosY] == 0))
             {
                 //Debug.Log("OccupiedTile Occupied: " + (playerPosX - 1) + playerPosY);
                 //Debug.Log("OccupiedTile Open: " + playerPosX + playerPosY);
@@ -106,7 +117,7 @@ public class Character : MonoBehaviour {
             int playerPosX = (int)(pos.x);
             int playerPosY = (int)(pos.y);
             if ((MapManager.wallTiles[playerPosX + 1, playerPosY] == 0) && (enemyManager.SearchEnemyArray(playerPosX + 1, playerPosY))
-                 && (MapManager.occupiedTiles[playerPosX+1, playerPosY] == 0))
+                 && (MapManager.occupiedTiles[playerPosX + 1, playerPosY] == 0))
             {
                 MapManager.occupiedTiles[playerPosX + 1, playerPosY] = 1;
                 MapManager.occupiedTiles[playerPosX, playerPosY] = 0;

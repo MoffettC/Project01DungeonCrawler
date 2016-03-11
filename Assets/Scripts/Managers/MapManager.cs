@@ -35,19 +35,25 @@ public class MapManager : MonoBehaviour
             for (int x = 0; x < mapWidth; x++)
             {
                 {
-                    wallTiles[x, y] = 1;
-                    occupiedTiles[x, y] = 0;
-                    //Debug.Log("Wall Tiles set to 1 " + wallTiles[x, y]);
+                    wallTiles[x, y] = 1; //0 is open 1 occupied
+                    occupiedTiles[x, y] = 1; 
+                    // 0 free
+                    // 1 environ/player occupied
+                    // 2 enemy
+                    // 3 item
+                    //Debug.Log("Occupied Tiles set to 0 " + occupiedTiles[x, y]);
                 }
             }
         }
         PlaceFloor();
         PlaceRooms(floorPrefab);
+
     }
 
     public void SetWalkable(int x, int y)
     {
         wallTiles[x, y] = 0;
+        occupiedTiles[x, y] = 0;
         //Debug.Log("wallTiles: " + x + y + " " + wallTiles[x, y]);
         //Debug.Log("Walkable " + x + y + " " + Walkable(x, y));
     }
@@ -86,6 +92,7 @@ public class MapManager : MonoBehaviour
         GameObject gObject;
         gObject = GameObject.Find("Wall Tile" + x + y);
         Destroy(gObject);
+        occupiedTiles[x, y] = 0;
         //Vector2 tile = new Vector2(x, y);
         //for (int i = 0; i < mapHeight; i++)
         //{

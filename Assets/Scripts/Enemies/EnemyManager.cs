@@ -53,7 +53,7 @@ public class EnemyManager : MonoBehaviour {
         enemyArray[enemyIndex].name = enemyIndex + " enemy01Type";
        // Debug.Log("eArray Transform: " + enemyArray[enemyIndex].transform.position);
         enemyIndex++;
-        MapManager.occupiedTiles[x, y] = 1;
+        MapManager.occupiedTiles[x, y] = 2;
         hasSpawned = true;
     }
 

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemHealth : Item {
+public class ItemHealth : Item, IUseItem {
 
     public itemType type = itemType.health;
    
+    public void useItem() {
+        Debug.Log("Use Item Invoked");
+    }
 
 	// Use this for initialization
 	void Start () {

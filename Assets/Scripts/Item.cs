@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public interface IUseItem
+{
+    void useItem();
+}
+
 public class Item : MonoBehaviour {
 
     public enum itemType {health, mana, strength, speed}
@@ -9,14 +14,7 @@ public class Item : MonoBehaviour {
     public string itemName;
     public string itemDesc;
 
-
-    // Use this for initialization
-    void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
+
+
+
