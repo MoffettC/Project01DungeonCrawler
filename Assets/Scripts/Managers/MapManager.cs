@@ -5,6 +5,7 @@ public class MapManager : MonoBehaviour
 {
     public GameObject wallPrefab;
     public GameObject floorPrefab;
+    public GameObject victorySpot;
     public static int[,] wallTiles;
     public static int[,] occupiedTiles;
     public int mapWidth;
@@ -47,7 +48,7 @@ public class MapManager : MonoBehaviour
         }
         PlaceFloor();
         PlaceRooms(floorPrefab);
-
+        PlaceVictorySpot();
     }
 
     public void SetWalkable(int x, int y)
@@ -192,6 +193,24 @@ public class MapManager : MonoBehaviour
             floorTile.name = "floorTile" + i + vX1;
             floorTile2.transform.parent = corridor.transform;
             floorTile2.name = "floorTile2" + i + vX1;
+        }
+    }
+
+    void PlaceVictorySpot()
+    {
+        //Debug.Log("Spawning Player");
+        for (int i = mapWidth - 1; i >= 0; i--)
+        {
+            for (int j = mapHeight - 1; j >= 0; j--)
+            {
+                //Debug.Log("wallTile: "+ i + j + " " + tileMap.Walkable(i, j));
+                if (wallTiles[i, j] == 0)
+                {
+                    GameObject victoryGO = Instantiate(victorySpot, new Vector3(i * tileSize, j * tileSize, 0), Quaternion.identity) as GameObject;
+                    occupiedTiles[i, j] = 10;
+                    return;
+                }
+            }
         }
     }
 

@@ -51,6 +51,7 @@ public class EnemyManager : MonoBehaviour {
         GameObject newEnemy = Instantiate(enemy, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
         enemyArray[enemyIndex] = newEnemy;
         enemyArray[enemyIndex].name = enemyIndex + " enemy01Type";
+        enemyArray[enemyIndex].transform.SetParent(this.transform, false);
        // Debug.Log("eArray Transform: " + enemyArray[enemyIndex].transform.position);
         enemyIndex++;
         MapManager.occupiedTiles[x, y] = 2;

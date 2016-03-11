@@ -33,18 +33,32 @@ public class ItemManager : MonoBehaviour {
         {
             for (int x = 0; x < mapManager.mapWidth; x++)
             {
+                //ItemSpawnAlgorithm();
                 int spawnChance = Random.Range(1, 100);
-                int itemType = Random.Range(1, 10);
+                int itemType = Random.Range(0, 2);
                 //Debug.Log(i + " " + j);
                 if ((MapManager.occupiedTiles[x, y] == 0) && (spawnChance <= 5))
                 {
-                    Debug.Log("x: "+ x + "y: " + y);
+                    //Debug.Log("x: "+ x + "y: " + y);
                     MapManager.occupiedTiles[x, y] = 3;
-                    itemsAtLocation[x, y] = Instantiate(items[0], new Vector2(x, y), Quaternion.identity) as GameObject;
+                    //GenerateItems();
+                    itemsAtLocation[x, y] = Instantiate(items[itemType], new Vector2(x, y), Quaternion.identity) as GameObject;
+                    itemsAtLocation[x, y].transform.SetParent(transform, false);
                     
                 }
             }
         }
+    }
+
+    void ItemSpawnAlgorithm()
+    {
+        //Spawn rate of various quality items
+        //Returns item id to give to GenerateItems()
+    }
+
+    void GenerateItems(int id)
+    {
+        //Call database of items and generate item to spawn with qualities according to database of items
     }
 
     public GameObject FindItem(int x, int y)

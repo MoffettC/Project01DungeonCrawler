@@ -26,30 +26,40 @@ public class Character : MonoBehaviour {
         {
             //Vector3 playerPos = pos;
             int playerPosX = (int)(pos.x);
-            int playerPosY = (int)(pos.y);
+            int playerPosY = (int)(pos.y) + 1;
+            int originalPosX = (int)(pos.x);
+            int originalPosY = (int)(pos.y);
             //Debug.Log(playerPos);
             //Debug.Log("wallTiles: " + playerPosX + (playerPosY + 1) + " " + TileMap.wallTiles[playerPosX, playerPosY + 1]);
-            if ((MapManager.wallTiles[playerPosX, playerPosY + 1] == 0) && (MapManager.occupiedTiles[playerPosX, playerPosY + 1] == 0))
+            if ((MapManager.wallTiles[playerPosX, playerPosY] == 0) && (MapManager.occupiedTiles[playerPosX, playerPosY] == 0))
             {
                 //Debug.Log("OccupiedTile Occupied: " + playerPosX + (playerPosY + 1));
                 //Debug.Log("OccupiedTile Open: " + playerPosX + playerPosY);
-                MapManager.occupiedTiles[playerPosX, playerPosY + 1] = 1;
-                MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                MapManager.occupiedTiles[playerPosX, playerPosY] = 1;
+                MapManager.occupiedTiles[originalPosX, originalPosY] = 0;
                 pos += Vector3.up;
-            } else if (enemyManager.SearchEnemyArray(playerPosX, playerPosY + 1) == false)
+            } else if (enemyManager.SearchEnemyArray(playerPosX, playerPosY) == false)
             {
                 Debug.Log("Player Attack Detected");
                 GameObject enemy = enemyManager.lastEnemySearched();
                 playerWeaponDamage(enemy);
-            } else if (MapManager.occupiedTiles[playerPosX, playerPosY + 1] == 3) {
+            } else if (MapManager.occupiedTiles[playerPosX, playerPosY] == 3) {
                 //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
-                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY + 1].GetComponent<Item>() as IUseItem;
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY].GetComponent<IUseItem>() as IUseItem;
                 if (itemTest != null) {
                     itemTest.useItem();
-                    MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
-                    Destroy(itemManager.itemsAtLocation[playerPosX, playerPosY + 1]);
+                    MapManager.occupiedTiles[originalPosX, originalPosY] = 0;
+                    Destroy(itemManager.itemsAtLocation[playerPosX, playerPosY]);
                     pos += Vector3.up;
+                    MapManager.occupiedTiles[playerPosX, playerPosY] = 1;
                 }
+            }
+            else if (MapManager.occupiedTiles[playerPosX, playerPosY] == 10)
+            {
+                Debug.Log("Player Victory!");
+                MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                MapManager.occupiedTiles[originalPosX, originalPosY] = 1;
+                pos += Vector3.up;
             }
             else
             {
@@ -78,6 +88,26 @@ public class Character : MonoBehaviour {
                 GameObject enemy = enemyManager.lastEnemySearched();
                 playerWeaponDamage(enemy);
             }
+            else if (MapManager.occupiedTiles[playerPosX - 1, playerPosY] == 3)
+            {
+                //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX - 1, playerPosY].GetComponent<Item>() as IUseItem;
+                if (itemTest != null)
+                {
+                    itemTest.useItem();
+                    MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                    Destroy(itemManager.itemsAtLocation[playerPosX - 1, playerPosY]);
+                    pos += Vector3.left;
+                    MapManager.occupiedTiles[playerPosX - 1, playerPosY] = 1;
+                }
+            }
+            else if (MapManager.occupiedTiles[playerPosX - 1, playerPosY] == 10)
+            {
+                Debug.Log("Player Victory!");
+                MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                MapManager.occupiedTiles[playerPosX - 1, playerPosY] = 0;
+                pos += Vector3.left;
+            }
             else
             {
                 Debug.Log("Cant Walk Left!");
@@ -105,6 +135,26 @@ public class Character : MonoBehaviour {
                 GameObject enemy = enemyManager.lastEnemySearched();
                 playerWeaponDamage(enemy);
             }
+            else if (MapManager.occupiedTiles[playerPosX, playerPosY - 1] == 3)
+            {
+                //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY - 1].GetComponent<Item>() as IUseItem;
+                if (itemTest != null)
+                {
+                    itemTest.useItem();
+                    MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                    Destroy(itemManager.itemsAtLocation[playerPosX, playerPosY - 1]);
+                    pos += Vector3.down;
+                    MapManager.occupiedTiles[playerPosX, playerPosY - 1] = 1;
+                }
+            }
+            else if (MapManager.occupiedTiles[playerPosX, playerPosY - 1] == 10)
+            {
+                Debug.Log("Player Victory!");
+                MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                MapManager.occupiedTiles[playerPosX, playerPosY - 1] = 0;
+                pos += Vector3.down;
+            }
             else
             {
                 Debug.Log("Cant Walk Down!");
@@ -131,6 +181,26 @@ public class Character : MonoBehaviour {
                 GameObject enemy = enemyManager.lastEnemySearched();
                 playerWeaponDamage(enemy);
             }
+            else if (MapManager.occupiedTiles[playerPosX + 1, playerPosY] == 3)
+            {
+                //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX + 1, playerPosY].GetComponent<Item>() as IUseItem;
+                if (itemTest != null)
+                {
+                    itemTest.useItem();
+                    MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                    Destroy(itemManager.itemsAtLocation[playerPosX + 1, playerPosY]);
+                    pos += Vector3.right;
+                    MapManager.occupiedTiles[playerPosX + 1, playerPosY] = 1;
+                }
+            }
+            else if (MapManager.occupiedTiles[playerPosX + 1, playerPosY] == 10)
+            {
+                Debug.Log("Player Victory!");
+                MapManager.occupiedTiles[playerPosX, playerPosY] = 0;
+                MapManager.occupiedTiles[playerPosX + 1, playerPosY] = 0;
+                pos += Vector3.right;
+            }
             else
             {
                 Debug.Log("Cant Walk Right!");
@@ -147,10 +217,7 @@ public class Character : MonoBehaviour {
         enemy.GetComponent<Health>().Damage(weaponDamage);
     }
 
-    public void activateItem(GameObject item)
-    {
 
-    }
 
 }
 

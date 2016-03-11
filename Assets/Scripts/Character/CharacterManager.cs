@@ -40,6 +40,7 @@ public class CharacterManager : MonoBehaviour
     {
         player = Instantiate(playerCharacter, new Vector3(i, j, 0), Quaternion.identity) as GameObject;
         player.name = "playerCharacter";
+        player.transform.SetParent(this.transform, false);
         //player.transform.parent = this.transform;
         hasSpawned = true;
         spawnX = i;

@@ -6,6 +6,7 @@ public interface IUseItem
     void useItem();
 }
 
+//Transfer to Item class under ItemDB
 public class Item : MonoBehaviour {
 
     public enum itemType {health, mana, strength, speed}
