@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemHealth : Item, IUseItem {
+public class ItemHealth : IUseItem {
 
-    public itemType type = itemType.health;
     
    
     public void useItem() {
         Debug.Log("Use Item Health Invoked");
+        //AddItem(GetComponent<ItemData>().item.ID);
+        //Either use on pick up or add to inventory
     }
 
 	// Use this for initialization

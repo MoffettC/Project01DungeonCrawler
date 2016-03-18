@@ -57,14 +57,11 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\PlugIns\LitJson.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,8 +70,14 @@
     <Compile Include="Assets\Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\Scripts\ItemHealth.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryDatabase.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemHealth.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemInterface.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemMana.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Tooltip.cs" />
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MapManager.cs" />

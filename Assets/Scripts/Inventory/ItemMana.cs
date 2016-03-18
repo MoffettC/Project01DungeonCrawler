@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemMana : Item, IUseItem
+public class ItemMana : IUseItem
 {
 
-    public itemType type = itemType.mana;
 
 
     public void useItem()

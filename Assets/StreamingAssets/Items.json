@@ -1,0 +1,31 @@
+[
+  {
+    "id": 0,
+    "title": "Supply Pound",
+    "value": 6,
+    "stats": {
+      "power": 3,
+      "defense": 2,
+      "mobility": 5
+    },
+    "description": "Beans, Bullets, Bandages",
+    "stackable": false,
+    "rarity": 2,
+    "slug":  "supply_pound"
+  },
+  {
+    "id": 1,
+    "title": "Artillery",
+    "value": 20,
+    "stats": {
+      "power": 3,
+      "defense": 2,
+      "mobility": 5
+    },
+    "description": "The Big Guns",
+    "stackable": true,
+    "rarity": 3,
+    "slug": "artillery"
+  }
+
+]

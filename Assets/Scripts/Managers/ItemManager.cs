@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ItemManager : MonoBehaviour {
 
+    private Inventory inventory;
     private MapManager mapManager;
     private int maxItemType = 10;
 
@@ -16,6 +17,7 @@ public class ItemManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        inventory = FindObjectOfType<Inventory>();
         mapManager = FindObjectOfType<MapManager>();
         GameObject[] items = new GameObject[maxItemType];
         itemsAtLocation = new GameObject[mapManager.mapWidth, mapManager.mapHeight];
@@ -39,10 +41,10 @@ public class ItemManager : MonoBehaviour {
                 //Debug.Log(i + " " + j);
                 if ((MapManager.occupiedTiles[x, y] == 0) && (spawnChance <= 5))
                 {
-                    //Debug.Log("x: "+ x + "y: " + y);
+                    Debug.Log("Creating map item");
                     MapManager.occupiedTiles[x, y] = 3;
-                    //GenerateItems();
-                    itemsAtLocation[x, y] = Instantiate(items[itemType], new Vector2(x, y), Quaternion.identity) as GameObject;
+                    itemsAtLocation[x, y] = Instantiate(inventory.AddItemToMap(ItemSpawnAlgorithm()), new Vector2(x, y), Quaternion.identity) as GameObject;
+                    //itemsAtLocation[x, y] = Instantiate(items[itemType], new Vector2(x, y), Quaternion.identity) as GameObject;
                     itemsAtLocation[x, y].transform.SetParent(transform, false);
                     
                 }
@@ -50,22 +52,21 @@ public class ItemManager : MonoBehaviour {
         }
     }
 
-    void ItemSpawnAlgorithm()
+    int ItemSpawnAlgorithm()
     {
+
         //Spawn rate of various quality items
         //Returns item id to give to GenerateItems()
+        return 1;
     }
 
-    void GenerateItems(int id)
-    {
-        //Call database of items and generate item to spawn with qualities according to database of items
-    }
 
     public GameObject FindItem(int x, int y)
     {
         GameObject item = itemsAtLocation[x, y];
+        //AddItem(item.ID); 
         return item;
     }
 
-
+ 
 }
