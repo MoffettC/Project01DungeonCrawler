@@ -67,6 +67,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\PlugIns\LitJson.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Character\Character.cs" />
@@ -74,9 +77,14 @@
     <Compile Include="Assets\Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemBlank.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemHealth.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemInterface.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemMana.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Tooltip.cs" />
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MapManager.cs" />

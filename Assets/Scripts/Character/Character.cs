@@ -138,7 +138,7 @@ public class Character : MonoBehaviour {
             else if (MapManager.occupiedTiles[playerPosX, playerPosY - 1] == 3)
             {
                 //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
-                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY - 1].GetComponent<Item>() as IUseItem;
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX, playerPosY - 1].GetComponent<IUseItem>() as IUseItem;
                 if (itemTest != null)
                 {
                     itemTest.useItem();
@@ -184,7 +184,7 @@ public class Character : MonoBehaviour {
             else if (MapManager.occupiedTiles[playerPosX + 1, playerPosY] == 3)
             {
                 //Check to see if gO has a script that inherits from item, then invokes IUseItem interface
-                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX + 1, playerPosY].GetComponent<Item>() as IUseItem;
+                IUseItem itemTest = itemManager.itemsAtLocation[playerPosX + 1, playerPosY].GetComponent<IUseItem>() as IUseItem;
                 if (itemTest != null)
                 {
                     itemTest.useItem();

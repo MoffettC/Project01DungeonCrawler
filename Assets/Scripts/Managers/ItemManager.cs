@@ -8,7 +8,7 @@ public class ItemManager : MonoBehaviour {
     private int maxItemType = 10;
 
     public GameObject[,] itemsAtLocation;
-    public GameObject[] items;
+    public GameObject[] itemsList;
     public int[,] itemOccupiedTiles;
 
     void Awake() {
@@ -37,14 +37,14 @@ public class ItemManager : MonoBehaviour {
             {
                 //ItemSpawnAlgorithm();
                 int spawnChance = Random.Range(1, 100);
-                int itemType = Random.Range(0, 2);
+                int itemType = Random.Range(1, 3);
                 //Debug.Log(i + " " + j);
                 if ((MapManager.occupiedTiles[x, y] == 0) && (spawnChance <= 5))
                 {
                     Debug.Log("Creating map item");
                     MapManager.occupiedTiles[x, y] = 3;
-                    itemsAtLocation[x, y] = Instantiate(inventory.AddItemToMap(ItemSpawnAlgorithm()), new Vector2(x, y), Quaternion.identity) as GameObject;
-                    //itemsAtLocation[x, y] = Instantiate(items[itemType], new Vector2(x, y), Quaternion.identity) as GameObject;
+                    //itemsAtLocation[x, y] = Instantiate(inventory.AddItemToMap(ItemSpawnAlgorithm()), new Vector2(x, y), Quaternion.identity) as GameObject;
+                    itemsAtLocation[x, y] = Instantiate(itemsList[itemType], new Vector2(x, y), Quaternion.identity) as GameObject;
                     itemsAtLocation[x, y].transform.SetParent(transform, false);
                     
                 }

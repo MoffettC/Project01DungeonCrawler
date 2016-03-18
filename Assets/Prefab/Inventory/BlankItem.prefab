@@ -10,15 +10,15 @@ GameObject:
   - 224: {fileID: 22459704}
   - 222: {fileID: 22282356}
   - 212: {fileID: 21276980}
-  - 114: {fileID: 11404936}
+  - 114: {fileID: 11408458}
   m_Layer: 5
-  m_Name: Artillery
+  m_Name: BlankItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11404936
+--- !u!114 &11408458
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -26,11 +26,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 138868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83034343ddfd10045aafef30604ee564, type: 3}
+  m_Script: {fileID: 11500000, guid: 118affa3f01a3ee4493b8fc7d011803b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotNum: 0
-  amount: 0
 --- !u!212 &21276980
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -52,15 +50,13 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2afee4b2d03730f47876d63523075f8f, type: 3}
-  m_Color: {r: 1, g: 0.53676474, b: 0.53676474, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &22282356
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -75,15 +71,15 @@ RectTransform:
   m_GameObject: {fileID: 138868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3837361, y: 0.8828652, z: 8.828651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.51, y: 0.52}
-  m_SizeDelta: {x: 0.54, y: 1.17}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: .639999986, y: .639999986}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -97,15 +93,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite

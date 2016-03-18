@@ -10,6 +10,8 @@ GameObject:
   - 224: {fileID: 22425638}
   - 222: {fileID: 22228064}
   - 212: {fileID: 21279238}
+  - 114: {fileID: 11426358}
+  - 225: {fileID: 22528448}
   m_Layer: 0
   m_Name: HealthPotion
   m_TagString: Untagged
@@ -34,6 +36,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11426358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff96af84aba8534790102a24aa74d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 0
+  amount: 0
 --- !u!114 &11428208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61,7 +76,6 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 50
     m_Alignment: 4
-    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -88,15 +102,13 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 2afee4b2d03730f47876d63523075f8f, type: 3}
-  m_Color: {r: 0.9411765, g: 0.09688579, b: 0.09688579, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_Color: {r: .941176474, g: .0968857929, b: .0968857929, a: 1}
 --- !u!222 &22228064
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -117,16 +129,16 @@ RectTransform:
   m_GameObject: {fileID: 159450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3132237, y: 1.3132241, z: 1.3132241}
+  m_LocalScale: {x: 1.31322372, y: 1.31322408, z: 1.31322408}
   m_Children:
   - {fileID: 22482752}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.53, y: 15.56}
-  m_SizeDelta: {x: 0.64, y: 0.64}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: .639999986, y: .639999986}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22482752
 RectTransform:
   m_ObjectHideFlags: 1
@@ -135,15 +147,26 @@ RectTransform:
   m_GameObject: {fileID: 181324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0}
+  m_LocalScale: {x: .0199999996, y: .0199999996, z: 0}
   m_Children: []
   m_Father: {fileID: 22425638}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000000059605355, y: -0.00000028684735}
-  m_SizeDelta: {x: 28.33, y: 20.2}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 5.96053553e-08, y: -2.86847353e-07}
+  m_SizeDelta: {x: 28.3299999, y: 20.2000008}
+  m_Pivot: {x: .5, y: .5}
+--- !u!225 &22528448
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159450}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -154,6 +177,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

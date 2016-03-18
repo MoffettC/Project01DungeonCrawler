@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemHealth : IUseItem {
+public class ItemHealth : ItemData, IUseItem {
 
-    
    
     public void useItem() {
         Debug.Log("Use Item Health Invoked");

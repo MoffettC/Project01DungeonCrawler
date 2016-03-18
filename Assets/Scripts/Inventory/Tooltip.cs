@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour {
 
-    private Item item;
+    private GameObject item;
     private string data;
     private GameObject tooltip;
     private string[] rarityValues = {"EEEEEE", "73ED47", "00BFFF", "B960FC", "FCA32D"};
@@ -23,10 +23,10 @@ public class Tooltip : MonoBehaviour {
         }
     }
 
-    public void Activate(Item item)
+    public void Activate(GameObject item)
     {
         this.item = item;
-        ConstructDataString();
+        //ConstructDataString();
         tooltip.SetActive(true);
     }
 
@@ -35,9 +35,9 @@ public class Tooltip : MonoBehaviour {
         tooltip.SetActive(false);
     }
 
-    public void ConstructDataString()
-    {
-        data = "<size=16><b>" + item.Title + "</b></size>\n\n" + item.Description + "\n\nPower: " + item.Power + ""; 
-        tooltip.transform.GetChild(0).GetComponent<Text>().text = data;
-    }
+    //public void ConstructDataString()
+    //{
+    //    data = "<size=16><b>" + item.Title + "</b></size>\n\n" + item.Description + "\n\nPower: " + item.Power + ""; 
+    //    tooltip.transform.GetChild(0).GetComponent<Text>().text = data;
+    //}
 }
